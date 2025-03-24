@@ -1,6 +1,6 @@
-#pragma once
+export module Point;
 
-class Point
+export class Point
 {
   const int _x;
   const int _y;
