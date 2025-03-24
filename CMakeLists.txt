@@ -4,9 +4,7 @@ project(GameOfLife)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-file(GLOB UTILITIES_MODULES "Utilities/*.ixx")
-file(GLOB GAME_STATE_MODULES "GameState/*.ixx")
+file(GLOB_RECURSE MODULES_FILES "Modules/*.ixx")
 
 add_executable(GameOfLife main.cpp
-        ${GAME_STATE_MODULES}
-        ${UTILITIES_MODULES})
+        ${MODULES_FILES})
