@@ -2,12 +2,32 @@
 
 import <string>;
 import <vector>;
+import <iostream>;
+import <stdexcept>;
 import GameOfLifeState;
 
 export class BaseCommandHandler
 {
+	virtual void HandleCommand(std::vector<std::string>& args, GameOfLifeState& gameOfLifeState) = 0;
+
+	virtual std::string GetCommandDescription() = 0;
 public:
 	virtual ~BaseCommandHandler() = default;
 
-	virtual void HandleCommand(std::vector<std::string> args, GameOfLifeState& gameOfLifeState) = 0;
+	void Invoke(std::vector<std::string>& args, GameOfLifeState& gameOfLifeState)
+	{
+		try
+		{
+			if (args.size() == 1 && args[0] == "help")
+			{
+				std::cout << GetCommandDescription() << std::endl;
+			}
+
+			HandleCommand(args, gameOfLifeState);
+		}
+		catch (const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
 };
