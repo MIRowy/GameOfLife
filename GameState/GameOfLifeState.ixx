@@ -1,6 +1,6 @@
-#pragma once
+export module GameOfLifeState;
 
-class GameOfLifeState {
+export class GameOfLifeState {
 public:
     void CleanBoard();
     void Print() const;

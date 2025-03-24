@@ -1,6 +1,7 @@
-#pragma once
+export module Registry;
 
-#include <map>
+import <map>;
+import <stdexcept>;
 
 using namespace std;
 
