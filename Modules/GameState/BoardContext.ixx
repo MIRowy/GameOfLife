@@ -18,7 +18,7 @@ public:
 
         _width = width;
         _height = height;
-    };
+    }
 
     [[nodiscard]]
     Point GetDimensions() const
