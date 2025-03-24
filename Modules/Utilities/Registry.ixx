@@ -5,7 +5,7 @@ import <stdexcept>;
 
 using namespace std;
 
-template<class TKey, class TValue>
+export template<class TKey, class TValue>
 class Registry
 {
     map<TKey, TValue> _internalMap;
