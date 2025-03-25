@@ -8,10 +8,10 @@ import <format>;
 export template<class TValue>
 class SingletonRegistry
 {
-    std::map<std::string, TValue> _internalMap;
+    std::map<std::string, TValue&> _internalMap;
 
 public:
-    void Register(const std::string &key, const TValue value)
+    void Register(const std::string &key, const TValue& value)
     {
         if (_internalMap.contains(key))
         {
@@ -22,7 +22,7 @@ public:
     }
 
     [[nodiscard]]
-    TValue Get(const std::string &key) const
+    TValue& Get(const std::string &key) const
     {
         auto it = _internalMap.find(key);
 
