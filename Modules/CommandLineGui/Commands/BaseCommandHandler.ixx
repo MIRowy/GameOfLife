@@ -4,17 +4,17 @@ import <string>;
 import <vector>;
 import <iostream>;
 import <stdexcept>;
-import GameOfLifeState;
+import GameOfLifeContext;
 
 export class BaseCommandHandler
 {
-	virtual void HandleCommand(std::vector<std::string>& args, GameOfLifeState& gameOfLifeState) = 0;
+	virtual void HandleCommand(std::vector<std::string>& args, GameOfLifeContext& gameOfLifeState) = 0;
 
 	virtual std::string GetCommandDescription() = 0;
 public:
 	virtual ~BaseCommandHandler() = default;
 
-	void Invoke(std::vector<std::string>& args, GameOfLifeState& gameOfLifeState)
+	void Invoke(std::vector<std::string>& args, GameOfLifeContext& gameOfLifeState)
 	{
 		try
 		{
