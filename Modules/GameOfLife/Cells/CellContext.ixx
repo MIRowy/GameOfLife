@@ -6,18 +6,20 @@ import <utility>;
 import BaseCell;
 import Point;
 
+using CellRef = std::reference_wrapper<BaseCell>;
+
 export class CellContext
 {
 public:
 	CellContext(
-		const std::vector<std::reference_wrapper<BaseCell>> &neighbours,
+		std::vector<CellRef> neighbours,
 		const Point position,
 		const Point boardSizes)
-	: Neighbours(neighbours), Position(position), BoardSizes(boardSizes)
+	: Neighbours(std::move(neighbours)), Position(position), BoardSizes(boardSizes)
 	{
 	}
 
-	const std::vector<std::reference_wrapper<BaseCell>> Neighbours;
+	const std::vector<CellRef> Neighbours;
 
 	const Point Position;
 

@@ -4,9 +4,9 @@ import <string>;
 import GameOfLifeState;
 import Point;
 
-export class GameOfLifeContext
+export class GameOfLifeManager
 {
-	GameOfLifeState& _gameOfLifeState;
+	GameOfLifeState _gameOfLifeState;
 
 public:
 	void SetGameCycleBehaviour(const std::string& gameCycleBehaviour);
