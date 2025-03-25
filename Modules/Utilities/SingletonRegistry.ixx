@@ -1,6 +1,7 @@
 export module SingletonRegistry;
 
 import <map>;
+import <memory>;
 import <stdexcept>;
 import <string>;
 import <format>;
@@ -8,17 +9,17 @@ import <format>;
 export template<class TValue>
 class SingletonRegistry
 {
-    std::map<std::string, TValue&> _internalMap;
+    std::map<std::string, std::unique_ptr<TValue>> _internalMap;
 
 public:
-    void Register(const std::string &key, const TValue& value)
+    void Register(const std::string &key, const TValue &value)
     {
         if (_internalMap.contains(key))
         {
             throw std::invalid_argument(std::format("Key ({}) is already registered in the registry.", key));
         }
 
-        _internalMap[key] = value;
+        _internalMap[key] = std::make_unique<TValue>(value);
     }
 
     [[nodiscard]]
@@ -28,7 +29,7 @@ public:
 
         if (it != _internalMap.end())
         {
-            return it->second;
+            return *it->second;
         }
 
         throw std::out_of_range(std::format("Key ({}) not found in registry.", key));
